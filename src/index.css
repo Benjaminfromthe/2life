@@ -1597,3 +1597,256 @@ input {
     padding-top: max(40px, var(--safe-top));
   }
 }
+
+/* ============================================================
+   EVENT CHOICE BUTTONS — Requirement #9
+   Rendered inside the consequence modal when an event
+   has 2-3 player options.
+   ============================================================ */
+
+/* Modal grows taller when showing choices */
+.consequence-modal--choices {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Stacked vertical grid of choice cards */
+.choice-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  margin-top: 4px;
+}
+
+/* Individual choice card */
+.choice-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.choice-btn:hover {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: var(--color-border-hover);
+  box-shadow: 0 0 18px rgba(139, 92, 246, 0.2);
+}
+
+/* Top row: icon + label + credit hint */
+.choice-btn-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.choice-btn-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.choice-btn-label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text);
+  flex: 1;
+}
+
+/* Credit-change hint badge */
+.choice-credit-hint {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.choice-credit-hint--pos {
+  background: rgba(52, 211, 153, 0.18);
+  color: #34d399;
+}
+
+.choice-credit-hint--neg {
+  background: rgba(248, 113, 113, 0.18);
+  color: #f87171;
+}
+
+/* Descriptive sub-text */
+.choice-btn-desc {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* ============================================================
+   LIFE LOG TIMELINE — Requirement #10
+   "Your Life Story" section on the game-over screen.
+   ============================================================ */
+
+.gameover-lifestory {
+  background: rgba(22, 17, 43, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Scrollable list of log entries */
+.life-log-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-height: 280px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) transparent;
+}
+
+/* Single timeline entry */
+.life-log-entry {
+  display: grid;
+  grid-template-columns: 56px 24px 1fr;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 6px;
+  border-bottom: 1px solid rgba(139, 92, 246, 0.08);
+  position: relative;
+}
+
+.life-log-entry:last-child {
+  border-bottom: none;
+}
+
+/* Age badge */
+.life-log-age {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--color-primary-light);
+  background: rgba(139, 92, 246, 0.15);
+  border-radius: var(--radius-full);
+  padding: 2px 8px;
+  text-align: center;
+  white-space: nowrap;
+  align-self: center;
+}
+
+/* Icon */
+.life-log-icon {
+  font-size: 1rem;
+  align-self: center;
+  text-align: center;
+}
+
+/* Narrative text — designed for AI generation in future */
+.life-log-text {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   GOALS GRID — Requirement #11
+   Chip-style display of achieved / missed goals.
+   ============================================================ */
+
+.gameover-goals {
+  background: rgba(22, 17, 43, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.goals-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+/* Individual goal chip */
+.goal-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  transition: opacity var(--transition-fast);
+}
+
+.goal-chip--achieved {
+  background: rgba(52, 211, 153, 0.12);
+  border-color: rgba(52, 211, 153, 0.35);
+}
+
+.goal-chip--missed {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.06);
+  opacity: 0.55;
+}
+
+.goal-chip-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.goal-chip-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text);
+  flex: 1;
+}
+
+.goal-chip-status {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.goal-chip--achieved .goal-chip-status {
+  color: #34d399;
+}
+
+.goal-chip--missed .goal-chip-status {
+  color: var(--color-text-dim);
+}
+
+/* ── Summary facts: extend to 4-col on wider screens ── */
+@media (min-width: 480px) {
+  .summary-facts {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .goals-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 360px) {
+  .goals-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .life-log-entry {
+    grid-template-columns: 48px 20px 1fr;
+    gap: 6px;
+  }
+}
