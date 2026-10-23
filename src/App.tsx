@@ -1,13 +1,15 @@
 // ============================================================
 // 2Life — App Root
+// Routes: welcome → life-blueprint → game → quiz → game-over
+// CharacterSelectScreen removed; LifeBlueprintScreen replaces it.
 // ============================================================
 import { AnimatePresence, motion } from "framer-motion";
 import { useGameStore } from "./store/gameStore";
-import WelcomeScreen from "./components/screens/WelcomeScreen";
-import CharacterSelectScreen from "./components/screens/CharacterSelectScreen";
-import GameScreen from "./components/screens/GameScreen";
-import QuizScreen from "./components/screens/QuizScreen";
-import GameOverScreen from "./components/screens/GameOverScreen";
+import WelcomeScreen       from "./components/screens/WelcomeScreen";
+import LifeBlueprintScreen from "./components/screens/LifeBlueprintScreen";
+import GameScreen          from "./components/screens/GameScreen";
+import QuizScreen          from "./components/screens/QuizScreen";
+import GameOverScreen      from "./components/screens/GameOverScreen";
 
 export default function App() {
   const { screen } = useGameStore();
@@ -15,6 +17,7 @@ export default function App() {
   return (
     <div className="app-root" id="app-root">
       <AnimatePresence mode="wait">
+
         {screen === "welcome" && (
           <motion.div
             key="welcome"
@@ -28,16 +31,16 @@ export default function App() {
           </motion.div>
         )}
 
-        {screen === "character-select" && (
+        {screen === "life-blueprint" && (
           <motion.div
-            key="character-select"
+            key="life-blueprint"
             className="screen-wrapper"
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -40 }}
             transition={{ duration: 0.4 }}
           >
-            <CharacterSelectScreen />
+            <LifeBlueprintScreen />
           </motion.div>
         )}
 
@@ -79,6 +82,7 @@ export default function App() {
             <GameOverScreen />
           </motion.div>
         )}
+
       </AnimatePresence>
     </div>
   );

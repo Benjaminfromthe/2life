@@ -1,5 +1,6 @@
 // ============================================================
 // 2Life — Welcome Screen
+// "Start Your Life" now navigates to life-blueprint wizard.
 // ============================================================
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -11,7 +12,7 @@ export default function WelcomeScreen() {
 
   const handleContinue = () => {
     setPlayerName(localName.trim() || "Player");
-    useGameStore.setState({ screen: "character-select" });
+    useGameStore.setState({ screen: "life-blueprint" });
   };
 
   return (
@@ -23,12 +24,12 @@ export default function WelcomeScreen() {
             key={i}
             className="star"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 4}s`,
+              left:              `${Math.random() * 100}%`,
+              top:               `${Math.random() * 100}%`,
+              animationDelay:    `${Math.random() * 4}s`,
               animationDuration: `${2 + Math.random() * 3}s`,
-              width: `${1 + Math.random() * 3}px`,
-              height: `${1 + Math.random() * 3}px`,
+              width:             `${1 + Math.random() * 3}px`,
+              height:            `${1 + Math.random() * 3}px`,
             }}
           />
         ))}
@@ -75,20 +76,23 @@ export default function WelcomeScreen() {
           </button>
         </motion.div>
 
-        {/* Features */}
+        {/* Feature pills */}
         <motion.div
           className="feature-pills"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          {["🎓 Study & Ace Quizzes", "💸 Manage Credits", "🎲 Random Events"].map(
-            (f) => (
-              <span key={f} className="feature-pill">
-                {f}
-              </span>
-            )
-          )}
+          {[
+            "🏢 5 Careers",
+            "📅 Yearly Life Sim",
+            "🎲 Life Events",
+            "👨‍👩‍👦 Family Goals",
+          ].map((f) => (
+            <span key={f} className="feature-pill">
+              {f}
+            </span>
+          ))}
         </motion.div>
       </div>
     </div>
