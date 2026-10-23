@@ -11,7 +11,6 @@ function ActionButton({ action, onClick, disabled }: {
   onClick: () => void;
   disabled: boolean;
 }) {
-  const hasCredit = !action.requiresCredits; // already filtered, just for styling
   const energyCost = action.statDelta.energy ?? 0;
   const creditDelta = action.creditDelta;
 

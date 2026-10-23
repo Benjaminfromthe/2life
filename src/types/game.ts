@@ -29,7 +29,9 @@ export interface StatDelta {
   grades?: number;
   fitness?: number;
   performance?: number;
+  [key: string]: number | undefined;
 }
+
 
 export interface Action {
   id: string;

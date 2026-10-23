@@ -4,6 +4,8 @@
 import { motion } from "framer-motion";
 import { useGameStore } from "../../store/gameStore";
 import { CHARACTERS } from "../../data/characters";
+import type { Stats } from "../../types/game";
+
 
 const REASONS: Record<string, { icon: string; title: string; body: string }> = {
   completed: {
@@ -58,7 +60,7 @@ function StatResult({ label, value, max = 100, color }: {
   );
 }
 
-function getGrade(stats: ReturnType<typeof useGameStore>["stats"], character: string | null) {
+function getGrade(stats: Stats, character: string | null) {
   const roleStat =
     character === "student"
       ? stats.grades
