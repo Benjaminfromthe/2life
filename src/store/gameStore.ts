@@ -25,6 +25,7 @@ import { CAREER_CHARACTER_MAP, getCareer } from "../data/careers";
 import { rollRandomEvent } from "../data/events";
 import { GOALS } from "../data/goals";
 import { LIFE_ENDINGS } from "../data/lifeEndings";
+import { DEFAULT_WORLD_ID } from "../data/worlds/index";
 
 // ── Constants ─────────────────────────────────────────────
 const OLD_AGE_THRESHOLD  = 60;
@@ -101,6 +102,11 @@ const initialState = {
   lifeLog:              [] as LifeLogEntry[],
   goalsAchieved:        [] as GoalId[],
   gameOverReason:       "" as LifeEndingReason | "",
+  // World system
+  worldId:              DEFAULT_WORLD_ID as string,
+  currentPlaceId:       null as string | null,
+  currentPlaceName:     null as string | null,
+  currentPlaceIcon:     null as string | null,
 };
 
 // ── Store ─────────────────────────────────────────────────
@@ -114,6 +120,15 @@ export const useGameStore = create<GameState>()(
 
       // ── setBlueprint ─────────────────────────────────────
       setBlueprint: (bp: LifeBlueprint) => set({ blueprint: bp }),
+
+      // ── setWorldId ───────────────────────────────────────
+      setWorldId: (id: string) => set({ worldId: id, currentPlaceId: null, currentPlaceName: null, currentPlaceIcon: null }),
+
+      // ── visitPlace ───────────────────────────────────────
+      // Called by the Phaser event bus when the player steps into a place.
+      visitPlace: (placeId: string, placeName: string, placeIcon: string) => {
+        set({ currentPlaceId: placeId, currentPlaceName: placeName, currentPlaceIcon: placeIcon });
+      },
 
       // ── beginLife ────────────────────────────────────────
       // Called from the Life Blueprint wizard step 5.
@@ -342,12 +357,12 @@ export const useGameStore = create<GameState>()(
 
       // ── resetGame ────────────────────────────────────────
       resetGame: () =>
-        set({ ...initialState, screen: "welcome", blueprint: defaultBlueprint() }),
+        set({ ...initialState, screen: "welcome", blueprint: defaultBlueprint(), worldId: DEFAULT_WORLD_ID }),
     }),
 
     // ── Persistence ──────────────────────────────────────
     {
-      name: "2life-game-state-v2", // bumped version to avoid stale state issues
+      name: "2life-game-state-v3", // bumped version — world system added
       partialize: (s) => ({
         playerName:           s.playerName,
         character:            s.character,
@@ -370,9 +385,13 @@ export const useGameStore = create<GameState>()(
         goalsAchieved:        s.goalsAchieved,
         screen:               s.screen,
         gameOverReason:       s.gameOverReason,
+        worldId:              s.worldId,
         // Transient UI — never persisted
         pendingConsequence:   null,
         pendingQuiz:          false,
+        currentPlaceId:       null,
+        currentPlaceName:     null,
+        currentPlaceIcon:     null,
       }),
     }
   )

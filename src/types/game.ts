@@ -261,9 +261,17 @@ export interface GameState {
   // ── Game over ────────────────────────────────────────────
   gameOverReason: LifeEndingReason | "";
 
+  // ── World system ─────────────────────────────────────────
+  worldId:          string;
+  currentPlaceId:   string | null;
+  currentPlaceName: string | null;
+  currentPlaceIcon: string | null;
+
   // ── Actions ──────────────────────────────────────────────
   setPlayerName:      (name: string)              => void;
   setBlueprint:       (bp: LifeBlueprint)         => void;
+  setWorldId:         (id: string)                => void;
+  visitPlace:         (placeId: string, placeName: string, placeIcon: string) => void;
   beginLife:          ()                          => void;
   performAction:      (action: Action)            => void;
   dismissConsequence: ()                          => void;
