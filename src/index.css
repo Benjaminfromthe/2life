@@ -1,5 +1,5 @@
-/* ============================================================
-   2Life — Global Design System
+﻿/* ============================================================
+   2Life â€” Global Design System
    Dark purple space theme with cartoon accents
    ============================================================ */
 
@@ -1486,7 +1486,7 @@ input {
    RESPONSIVE BREAKPOINTS
    ============================================================ */
 
-/* ---- 360px — small phones ---- */
+/* ---- 360px â€” small phones ---- */
 @media (max-width: 420px) {
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1510,7 +1510,7 @@ input {
   }
 }
 
-/* ---- 768px — tablets ---- */
+/* ---- 768px â€” tablets ---- */
 @media (min-width: 768px) {
   .game-screen {
     max-width: 640px;
@@ -1546,7 +1546,7 @@ input {
   }
 }
 
-/* ---- 1280px — desktop ---- */
+/* ---- 1280px â€” desktop ---- */
 @media (min-width: 1280px) {
   .app-root {
     background: radial-gradient(ellipse at 50% 0%, #100824 0%, #0a0710 100%);
@@ -1599,7 +1599,7 @@ input {
 }
 
 /* ============================================================
-   EVENT CHOICE BUTTONS — Requirement #9
+   EVENT CHOICE BUTTONS â€” Requirement #9
    Rendered inside the consequence modal when an event
    has 2-3 player options.
    ============================================================ */
@@ -1690,7 +1690,7 @@ input {
 }
 
 /* ============================================================
-   LIFE LOG TIMELINE — Requirement #10
+   LIFE LOG TIMELINE â€” Requirement #10
    "Your Life Story" section on the game-over screen.
    ============================================================ */
 
@@ -1752,7 +1752,7 @@ input {
   text-align: center;
 }
 
-/* Narrative text — designed for AI generation in future */
+/* Narrative text â€” designed for AI generation in future */
 .life-log-text {
   font-size: 0.8rem;
   color: var(--color-text-muted);
@@ -1760,7 +1760,7 @@ input {
 }
 
 /* ============================================================
-   GOALS GRID — Requirement #11
+   GOALS GRID â€” Requirement #11
    Chip-style display of achieved / missed goals.
    ============================================================ */
 
@@ -1829,7 +1829,7 @@ input {
   color: var(--color-text-dim);
 }
 
-/* ── Summary facts: extend to 4-col on wider screens ── */
+/* â”€â”€ Summary facts: extend to 4-col on wider screens â”€â”€ */
 @media (min-width: 480px) {
   .summary-facts {
     grid-template-columns: repeat(4, 1fr);
@@ -1853,7 +1853,7 @@ input {
 
 /* ============================================================
    LIFE BLUEPRINT WIZARD
-   5-step wizard screen: welcome → life-blueprint → game
+   5-step wizard screen: welcome â†’ life-blueprint â†’ game
    ============================================================ */
 
 .blueprint-screen {
@@ -1881,7 +1881,7 @@ input {
   padding-top: max(32px, var(--safe-top));
 }
 
-/* ── Wizard header ── */
+/* â”€â”€ Wizard header â”€â”€ */
 .blueprint-header {
   display: flex;
   flex-direction: column;
@@ -1926,7 +1926,7 @@ input {
   background: var(--color-primary-dark);
 }
 
-/* ── Wizard stage + step wrapper ── */
+/* â”€â”€ Wizard stage + step wrapper â”€â”€ */
 .wizard-stage {
   width: 100%;
 }
@@ -1973,7 +1973,7 @@ input {
   line-height: 1.5;
 }
 
-/* ── Nav buttons row ── */
+/* â”€â”€ Nav buttons row â”€â”€ */
 .wizard-nav {
   display: flex;
   gap: 12px;
@@ -2004,7 +2004,7 @@ input {
   color: var(--color-text);
 }
 
-/* ── Step 2: Age slider ── */
+/* â”€â”€ Step 2: Age slider â”€â”€ */
 .age-display {
   display: flex;
   align-items: baseline;
@@ -2058,7 +2058,7 @@ input {
   margin-top: -10px;
 }
 
-/* ── Step 3: Career cards ── */
+/* â”€â”€ Step 3: Career cards â”€â”€ */
 .career-cards-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2155,7 +2155,7 @@ input {
   justify-content: center;
 }
 
-/* ── Step 4: Family section ── */
+/* â”€â”€ Step 4: Family section â”€â”€ */
 .family-section {
   width: 100%;
   display: flex;
@@ -2241,7 +2241,7 @@ input {
   color: var(--color-primary-light);
 }
 
-/* ── Step 5: Blueprint summary card ── */
+/* â”€â”€ Step 5: Blueprint summary card â”€â”€ */
 .blueprint-summary-card {
   width: 100%;
   background: var(--color-surface-2);
@@ -2326,7 +2326,7 @@ input {
   color: var(--color-text-dim);
 }
 
-/* ── Responsive ── */
+/* â”€â”€ Responsive â”€â”€ */
 @media (max-width: 420px) {
   .career-cards-grid {
     grid-template-columns: 1fr;
@@ -2372,7 +2372,7 @@ input {
   /* Prevent canvas from exceeding the container */
 }
 
-/* Phaser injects a <canvas> — make it fill its container */
+/* Phaser injects a <canvas> â€” make it fill its container */
 .phaser-world canvas {
   display: block;
   width: 100% !important;
@@ -2380,7 +2380,7 @@ input {
   touch-action: none; /* critical for pointer events on mobile */
 }
 
-/* ── Place indicator banner ───────────────────────────────── */
+/* â”€â”€ Place indicator banner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .place-indicator {
   display: flex;
   align-items: center;
@@ -2410,7 +2410,7 @@ input {
   50%       { opacity: 1; }
 }
 
-/* ── World selector dropdown ──────────────────────────────── */
+/* â”€â”€ World selector dropdown â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .world-selector {
   appearance: none;
   background: rgba(139, 92, 246, 0.15);
@@ -2435,3 +2435,326 @@ input {
   color: var(--color-text);
 }
 
+
+/* ============================================================
+   PHASE 2C — TAB BAR
+   ============================================================ */
+.game-tab-bar {
+  display: flex;
+  gap: 4px;
+  padding: 4px 8px;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+  z-index: 20;
+}
+.game-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: var(--radius-md);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+  position: relative;
+  cursor: pointer;
+}
+.game-tab--active {
+  background: rgba(139, 92, 246, 0.2);
+  border-color: rgba(139, 92, 246, 0.4);
+  color: var(--color-text);
+}
+.game-tab:hover:not(.game-tab--active) {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text);
+}
+.tab-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f59e0b, #ef4444);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  animation: badge-pulse 2s ease-in-out infinite;
+}
+@keyframes badge-pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.15); }
+}
+.game-tab-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.game-tab-content--scroll {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) transparent;
+}
+.game-tab-content--scroll::-webkit-scrollbar { width: 3px; }
+.game-tab-content--scroll::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 2px;
+}
+
+/* ============================================================
+   WORLD STATS HUD
+   ============================================================ */
+.world-hud {
+  background: linear-gradient(135deg, rgba(22,17,43,0.9), rgba(30,24,64,0.85));
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  padding: 6px 12px 8px;
+  flex-shrink: 0;
+}
+.world-hud-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.world-hud-name {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--color-primary-light);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.world-hud-rank {
+  font-size: 0.65rem;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+  background: rgba(139,92,246,0.25);
+  border: 1px solid rgba(139,92,246,0.4);
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+.world-hud-money {
+  margin-left: auto;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fbbf24;
+}
+.world-hud-stats { display: flex; flex-direction: column; gap: 4px; }
+.world-hud-stat {
+  display: grid;
+  grid-template-columns: 16px 1fr 28px;
+  align-items: center;
+  gap: 6px;
+}
+.world-hud-stat-icon { font-size: 0.7rem; text-align: center; }
+.world-hud-stat-bar-bg {
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255,255,255,0.08);
+  overflow: hidden;
+}
+.world-hud-stat-bar-fill { height: 100%; border-radius: 3px; transition: width 0.5s ease; }
+.world-hud-stat-val { font-size: 0.6rem; color: var(--color-text-muted); text-align: right; font-weight: 600; }
+
+/* ============================================================
+   CHALLENGE PANEL
+   ============================================================ */
+.challenge-panel { padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+.challenge-panel--complete { align-items: center; justify-content: center; gap: 12px; padding: 32px 20px; text-align: center; }
+.challenge-panel-done-icon { font-size: 2.5rem; display: block; }
+.challenge-panel-done-text { color: var(--color-text-muted); font-size: 0.9rem; }
+.challenge-panel-header {
+  background: rgba(22,17,43,0.8);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 12px 14px 10px;
+}
+.challenge-panel-title-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.challenge-panel-level-badge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+.challenge-panel-title { font-size: 0.95rem; font-weight: 700; color: var(--color-text); }
+.challenge-panel-goal { font-size: 0.72rem; color: var(--color-text-muted); margin-bottom: 8px; }
+.challenge-progress { height: 5px; border-radius: 3px; background: rgba(255,255,255,0.08); overflow: hidden; }
+.challenge-progress-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--color-primary), #22d3ee);
+  transition: width 0.5s ease;
+}
+.challenge-list { display: flex; flex-direction: column; gap: 8px; }
+
+/* Challenge cards */
+.challenge-card {
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color var(--transition-fast);
+}
+.challenge-card:hover { border-color: var(--color-border-hover); }
+.challenge-card--boss {
+  border-color: rgba(251,191,36,0.4);
+  background: linear-gradient(135deg, rgba(30,24,64,0.95), rgba(40,20,20,0.95));
+}
+.challenge-card--boss:hover { border-color: rgba(251,191,36,0.7); }
+.challenge-card--done { opacity: 0.55; display: flex; align-items: center; gap: 10px; padding: 10px 14px; cursor: default; }
+.challenge-done-icon { font-size: 1.1rem; }
+.challenge-done-label { font-size: 0.8rem; color: var(--color-text-muted); font-weight: 600; text-decoration: line-through; }
+.challenge-card-header {
+  width: 100%;
+  text-align: left;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: transparent;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  position: relative;
+}
+.challenge-card-header:hover { background: rgba(255,255,255,0.04); }
+.challenge-card-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.challenge-card-name { font-size: 0.88rem; font-weight: 700; color: var(--color-text); }
+.challenge-card-desc { font-size: 0.72rem; color: var(--color-text-muted); line-height: 1.4; }
+.challenge-chevron { position: absolute; top: 12px; right: 14px; font-size: 0.6rem; color: var(--color-text-muted); }
+.challenge-card-body { overflow: hidden; border-top: 1px solid var(--color-border); }
+
+/* Badges */
+.challenge-badge { font-size: 0.6rem; font-weight: 700; padding: 2px 7px; border-radius: var(--radius-full); text-transform: uppercase; letter-spacing: 0.05em; }
+.badge-skill    { background: rgba(59,130,246,0.25); color: #93c5fd; border: 1px solid rgba(59,130,246,0.4); }
+.badge-choice   { background: rgba(139,92,246,0.25); color: #c4b5fd; border: 1px solid rgba(139,92,246,0.4); }
+.badge-quiz     { background: rgba(34,197,94,0.25); color: #86efac; border: 1px solid rgba(34,197,94,0.4); }
+.badge-minigame { background: rgba(249,115,22,0.25); color: #fed7aa; border: 1px solid rgba(249,115,22,0.4); }
+.boss-badge {
+  font-size: 0.62rem;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, rgba(251,191,36,0.3), rgba(239,68,68,0.3));
+  border: 1px solid rgba(251,191,36,0.5);
+  color: #fde68a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.challenge-difficulty { font-size: 0.65rem; letter-spacing: 1px; }
+.diff-star--on  { color: #fbbf24; }
+.diff-star--off { color: rgba(255,255,255,0.15); }
+
+/* Stat check */
+.stat-check-area { padding: 16px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.roll-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 13px 20px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 16px rgba(59,130,246,0.4);
+}
+.roll-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(59,130,246,0.55); }
+.roll-btn--rolling { opacity: 0.7; cursor: default; }
+.roll-spinner { animation: spin-wobble 0.6s linear infinite; display: inline-block; }
+@keyframes spin-wobble {
+  0%,100% { transform: rotate(0deg) scale(1); }
+  25%      { transform: rotate(-20deg) scale(1.1); }
+  75%      { transform: rotate(20deg) scale(1.1); }
+}
+.stat-check-result {
+  width: 100%;
+  padding: 20px 16px;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+.result-success { background: linear-gradient(135deg, rgba(34,197,94,0.2), rgba(16,185,129,0.15)); border: 1px solid rgba(34,197,94,0.4); }
+.result-failure { background: linear-gradient(135deg, rgba(239,68,68,0.2), rgba(220,38,38,0.15)); border: 1px solid rgba(239,68,68,0.4); }
+.result-icon { font-size: 2rem; animation: result-pop 0.5s ease; }
+@keyframes result-pop {
+  0%   { transform: scale(0) rotate(-20deg); }
+  70%  { transform: scale(1.2) rotate(5deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+.result-label { font-size: 1rem; font-weight: 700; color: var(--color-text); }
+
+/* Choice options */
+.choice-options { padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+.challenge-option {
+  width: 100%;
+  text-align: left;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-3);
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: all var(--transition-fast);
+  font-family: inherit;
+}
+.challenge-option:hover:not(:disabled) {
+  background: rgba(139,92,246,0.2);
+  border-color: var(--color-border-hover);
+  transform: translateY(-2px);
+}
+.challenge-opt-label { font-size: 0.85rem; font-weight: 700; color: var(--color-text); }
+.challenge-opt-desc  { font-size: 0.7rem; color: var(--color-text-muted); line-height: 1.35; }
+.challenge-opt-effects { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+.eff-chip { font-size: 0.6rem; font-weight: 700; padding: 2px 6px; border-radius: var(--radius-full); }
+.eff-positive { background: rgba(34,197,94,0.2); color: #86efac; border: 1px solid rgba(34,197,94,0.35); }
+.eff-negative { background: rgba(239,68,68,0.2); color: #fca5a5; border: 1px solid rgba(239,68,68,0.35); }
+
+/* Level complete */
+.level-complete {
+  margin: 4px 0;
+  padding: 20px 16px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(139,92,246,0.3), rgba(34,211,238,0.2));
+  border: 1px solid rgba(139,92,246,0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(139,92,246,0.2);
+}
+.level-complete-icon { font-size: 2.2rem; animation: bounce-medal 1s ease-in-out infinite; }
+@keyframes bounce-medal {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-8px) rotate(5deg); }
+}
+.level-complete-text {
+  font-size: 1.05rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #c084fc, #22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

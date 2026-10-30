@@ -25,7 +25,7 @@ import { CAREER_CHARACTER_MAP, getCareer } from "../data/careers";
 import { rollRandomEvent } from "../data/events";
 import { GOALS } from "../data/goals";
 import { LIFE_ENDINGS } from "../data/lifeEndings";
-import { DEFAULT_WORLD_ID } from "../data/worlds/index";
+import { DEFAULT_WORLD_ID, getWorld } from "../data/worlds/index";
 
 // ── Constants ─────────────────────────────────────────────
 const OLD_AGE_THRESHOLD  = 60;
@@ -107,6 +107,13 @@ const initialState = {
   currentPlaceId:       null as string | null,
   currentPlaceName:     null as string | null,
   currentPlaceIcon:     null as string | null,
+  // World stats / level
+  worldStats:           {} as Record<string, number>,
+  worldMoney:           0,
+  levelIndex:           0,
+  challengesDone:       [] as string[],
+  bossDefeated:         false,
+  worldComplete:        false,
 };
 
 // ── Store ─────────────────────────────────────────────────
@@ -122,7 +129,21 @@ export const useGameStore = create<GameState>()(
       setBlueprint: (bp: LifeBlueprint) => set({ blueprint: bp }),
 
       // ── setWorldId ───────────────────────────────────────
-      setWorldId: (id: string) => set({ worldId: id, currentPlaceId: null, currentPlaceName: null, currentPlaceIcon: null }),
+      setWorldId: (id: string) => {
+        const world = getWorld(id);
+        const worldStats: Record<string, number> = {};
+        for (const stat of world.stats) worldStats[stat.id] = stat.startValue;
+        set({
+          worldId: id,
+          currentPlaceId: null, currentPlaceName: null, currentPlaceIcon: null,
+          worldStats,
+          worldMoney:     world.ranks[0]?.salary ?? 0,
+          levelIndex:     0,
+          challengesDone: [],
+          bossDefeated:   false,
+          worldComplete:  false,
+        });
+      },
 
       // ── visitPlace ───────────────────────────────────────
       // Called by the Phaser event bus when the player steps into a place.
@@ -174,7 +195,73 @@ export const useGameStore = create<GameState>()(
           lifeLog:              [firstEntry],
           goalsAchieved:        [],
           gameOverReason:       "",
+          // Seed world stats from active WorldDef
+          worldStats:           (() => {
+            const world = getWorld(state.worldId);
+            const ws: Record<string, number> = {};
+            for (const s of world.stats) ws[s.id] = s.startValue;
+            return ws;
+          })(),
+          worldMoney:    getWorld(state.worldId).ranks[0]?.salary ?? 0,
+          levelIndex:    0,
+          challengesDone:[],
+          bossDefeated:  false,
+          worldComplete: false,
         });
+      },
+
+      // ── completeChallenge ────────────────────────────────
+      completeChallenge: (challengeId: string, _outcome: "success" | "failure", statDelta: Record<string, number>, moneyDelta: number) => {
+        const state = get();
+        const newStats = { ...state.worldStats };
+        for (const [k, v] of Object.entries(statDelta)) {
+          newStats[k] = Math.max(0, Math.min(100, (newStats[k] ?? 50) + v));
+        }
+        // Also mirror energy/health changes into legacy stats
+        const legacyDelta: Record<string, number> = {};
+        if (statDelta.energy)  legacyDelta.energy  = statDelta.energy;
+        if (statDelta.health)  legacyDelta.health  = statDelta.health;
+        const newLog = [...state.lifeLog, makeLogEntry(state.age, "⚔️", `Completed challenge: ${challengeId}`, "event")];
+        set({
+          worldStats:     newStats,
+          worldMoney:     Math.max(0, state.worldMoney + moneyDelta),
+          challengesDone: [...state.challengesDone, challengeId],
+          stats:          Object.keys(legacyDelta).length ? applyStatDelta(state.stats, legacyDelta) : state.stats,
+          lifeLog:        newLog,
+        });
+      },
+
+      // ── defeatBoss ─────────────────────────────────────────
+      defeatBoss: (statDelta: Record<string, number>, moneyDelta: number) => {
+        const state = get();
+        const newStats = { ...state.worldStats };
+        for (const [k, v] of Object.entries(statDelta)) {
+          newStats[k] = Math.max(0, Math.min(100, (newStats[k] ?? 50) + v));
+        }
+        const newLog = [...state.lifeLog, makeLogEntry(state.age, "🏆", "Defeated the boss!", "milestone")];
+        set({ worldStats: newStats, worldMoney: Math.max(0, state.worldMoney + moneyDelta), bossDefeated: true, lifeLog: newLog });
+      },
+
+      // ── advanceLevel ────────────────────────────────────────
+      advanceLevel: () => {
+        const state     = get();
+        const world     = getWorld(state.worldId);
+        const nextIndex = state.levelIndex + 1;
+        const isLast    = nextIndex >= world.levels.length;
+        const newLog    = [...state.lifeLog, makeLogEntry(state.age, "🎖️",
+          isLast ? `Completed the world: ${world.name}!` : `Advanced to level ${nextIndex + 1}: ${world.levels[nextIndex]?.name ?? ""}.`,
+          "milestone"
+        )];
+        set({
+          levelIndex:     isLast ? state.levelIndex : nextIndex,
+          challengesDone: [],
+          bossDefeated:   false,
+          worldComplete:  isLast,
+          lifeLog:        newLog,
+        });
+        if (isLast) {
+          set({ screen: "game-over", gameOverReason: "completed", goalsAchieved: evaluateGoals(get()) });
+        }
       },
 
       // ── performAction ────────────────────────────────────

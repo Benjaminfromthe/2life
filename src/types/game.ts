@@ -267,11 +267,22 @@ export interface GameState {
   currentPlaceName: string | null;
   currentPlaceIcon: string | null;
 
+  // ── World stats (separate from legacy stats) ─────────────
+  worldStats:   Record<string, number>;
+  worldMoney:   number;
+  levelIndex:   number;   // current level index in worldDef.levels
+  challengesDone: string[];  // completed challenge IDs in current level
+  bossDefeated: boolean;
+  worldComplete: boolean;
+
   // ── Actions ──────────────────────────────────────────────
   setPlayerName:      (name: string)              => void;
   setBlueprint:       (bp: LifeBlueprint)         => void;
   setWorldId:         (id: string)                => void;
   visitPlace:         (placeId: string, placeName: string, placeIcon: string) => void;
+  completeChallenge:  (challengeId: string, outcome: "success" | "failure", statDelta: Record<string, number>, moneyDelta: number) => void;
+  defeatBoss:         (statDelta: Record<string, number>, moneyDelta: number) => void;
+  advanceLevel:       ()                          => void;
   beginLife:          ()                          => void;
   performAction:      (action: Action)            => void;
   dismissConsequence: ()                          => void;
